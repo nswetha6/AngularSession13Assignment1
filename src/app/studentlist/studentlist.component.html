@@ -1,0 +1,42 @@
+<p>
+  studentlist works!
+</p>
+<div class="container">
+
+  <div>
+    <label for ="searchname"> Search for Name</label>
+    <input type="text" id="searchname" class="form-control" placeholder="Search for student"
+     [(ngModel)]="searchterm"> 
+  </div>
+  <!-- <div>
+    <label for ="searchname"> Search for Name</label>
+    <input type="text" id="searchname" class="form-control" placeholder="Search for student"
+     > 
+  </div> -->
+
+    <table class="table table-bordered table-hover table-responsive">
+        <thead class="panel panel-primary">
+      <tr class="panel-heading">
+      <!-- <td>ID</td> -->
+        <td>First Name</td>
+        <td>Middle Name</td>
+        <td>Last Name</td>
+        <td>Department</td>
+        <td>Date Of Joining</td>
+        <td>Remove Student</td>
+      </tr>  
+    </thead>
+
+    <tr *ngFor="let s of students | namesearch:searchterm">
+      <!-- <td>{{s.id}}</td> -->
+      <td>
+       <a [routerLink]= "['/StudentInfo',s.id]" (click)="getStudentInfo(s.id)">
+        {{s.FirstName | titlecase}}</a></td>
+      <td>{{s.MiddleName}}</td>
+      <td>{{s.LastName}}</td>
+      <td>{{s.Department}}</td>
+      <td>{{s.DateOfJoin | date:"dd/M/yyyy"}}</td>
+      <td><button (click)="removeStudent(s.id)">Remove</button></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,41 @@
+<p>
+  studentinfo works!
+</p>
+
+<!-- <div class="container">
+  <table *ngIf="s.id = " class="panel panel-info">
+    <tr class="panel-primary">
+      <td>FirstName</td>
+      
+    </tr>
+    
+  </table>
+</div> -->
+
+<div class="container">
+    <table class="table table-bordered table-hover table-responsive">
+        <thead class="panel panel-primary">
+      <tr class="panel-heading">
+      
+        <td>First Name</td>
+        <td>Middle Name</td>
+        <td>Last Name</td>
+        <td>Department</td>
+        <td>Date Of Joining</td>
+      </tr> 
+    </thead>
+      <tr>
+        <td>{{student.FirstName}}</td>
+        <td>{{student.MiddleName}}</td>
+        <td>{{student.LastName}}</td>
+        <td>{{student.Department}}</td>
+        <td>{{student.DateOfJoin | date:"dd/M/yyyy"}}</td>
+      </tr>  
+    </table>
+    <div class="panel-footer">
+      <a class="btn btn-primary" [routerLink]="['/StudentsList']">Back to Students List </a>
+      <!-- <a class="btn btn-primary center" [routerLink]="['/AddStudent']">Back to Add Student </a> -->
+      <button class="btn btn-primary pull-right" (click)="viewNextStudent()"> View next Student</button>
+      
+     </div>
+    </div>

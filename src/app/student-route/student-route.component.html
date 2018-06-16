@@ -1,0 +1,60 @@
+<p>
+  student-route works!
+</p>
+
+<div class="container">
+    <form [formGroup]="routeform" (ngSubmit)="addFormValues(routeform.value)">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+               Session 13 - Routing Assignment
+          </div>
+        </div>
+        <!-- <div class="form-group">
+            <label for="id">S.No</label>
+            <input type="number"  class="form-control" id="id" 
+              placeholder="Enter First Name" formControlName="id">
+          </div> -->
+        <div class="form-group">
+          <label for="firstname">Enter First Name<span style="color:red">*</span></label>
+          <input type="text"  class="form-control" id="firstname" 
+            placeholder="Enter First Name" formControlName='FirstName'>
+            <div *ngIf="routeform.controls['FirstName'].errors && (routeform.controls['FirstName'].touched || routeform.controls['FirstName'].dirty)"
+                  class="alert alert-danger">
+                  <div *ngIf="routeform.controls['FirstName'].hasError('required')">
+                    First Name is mandatory
+                  </div>
+            </div>
+       </div>
+        <div class="form-group">
+          <label for="middlename">Enter Middle Name</label>
+          <input type="text"  class="form-control" id="middlename" 
+            placeholder="Enter Middle Name" formControlName="MiddleName">
+        </div>
+        <div class="form-group">
+          <label for="lastname">Enter Last Name</label>
+          <input type="text"  class="form-control" id="lastname" 
+            placeholder="Enter Last Name" formControlName="LastName">
+        </div>
+        <div class="form-group">
+          <label for ="department">Choose Department</label>
+            <select class="form-control" id="department" formControlName="Department">
+              <option *ngFor="let d of departmentArray" [ngValue]="d.depname" >{{d.depname}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Date of Joining</label>
+          <input type="date" class="form-control" id="date" formControlName="DateOfJoin">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!routeform.valid">Submit</button>
+        <button type="reset" class=" btn btn-danger" (click)="resetform()">Reset</button>
+
+    </form>
+
+    <br>
+   
+
+    <div *ngIf="studentArray.length >0">
+      <app-studentlist [students]="studentArray"></app-studentlist>
+    </div>
+</div>
